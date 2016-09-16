@@ -1,0 +1,18 @@
+{% set base = config.get('TEMPLATE_PATH') %}
+{% extends '{0}/skeleton/error.html'.format(base) %}
+{%- import '{}/macros/headers.html'.format(base) as headers -%}
+
+{%block title %}403 Forbidden{% endblock %}
+{%block description %}403 Forbidden{% endblock %}
+
+{%block hero %}{{
+    headers.hero(
+        title='403 Forbidden',
+        background_url='{}/img/hero/default.jpg'.format(config.get('ASSET_PATH')),
+        additional_css="background-position: top; height:100vh;",
+        category='Error',
+        subtitle='You don’t have permission to view this page. <br>Lost? Return to the <a class="solid" href="/">Home Page</a>'
+    )
+}}{% endblock %}
+{% block content_main %}
+{% endblock %}

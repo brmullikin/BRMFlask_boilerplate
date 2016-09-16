@@ -1,0 +1,36 @@
+// tag namepsaces 
+
+// These are going to be style
+
+#tags {
+    #a {
+        .default(@color: #333; @hover: #444) {
+            color: @color;
+            transition: all 0.1s ease-in;
+            &:hover {color: @hover;transition: all 0.3s ease-in;}
+        }
+        .transition(@base: all 0.1s ease-in; @hover: all 0.3s ease-out) {
+            #tags > #a > .default;
+            transition: @base;
+            &:hover {
+                transition: @hover;
+            }
+        }
+        .color(@color:#333; @hover: #444) {
+            color: @color;
+            &:hover {
+                color:@hover;
+            }
+        }
+    }
+    .hr() {
+        display: block;
+        height: 1px;
+        border: none;
+        // Consider changing color to less variable
+        border-top: 1px solid #333;
+        margin: 1em 0;
+        padding: 0;
+        clear: both;
+    }
+}

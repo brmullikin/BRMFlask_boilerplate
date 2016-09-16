@@ -1,0 +1,16 @@
+{%- macro icons(asset_path="") -%}
+    <link rel="shortcut icon" href="{{ asset_path }}/img/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ asset_path }}/img/icons/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset_path }}/img/icons/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset_path }}/img/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset_path }}/img/icons/touch-icon-ipad-retina.png">
+{%- endmacro -%}
+
+{%- macro stylesheet(filename="style") -%}
+    <link rel="stylesheet" type="text/css" href="{{ config.get('ASSET_PATH') }}/css/{{filename}}{{config.get('ASSET_SUFFIX')}}.css{{'?v={}'.format(config.get('VERSION')) if config.get('INCLUDE_VERSION')}}">
+{%- endmacro -%}
+
+{%- macro async_stylesheet(filename="style") -%}
+    <script>var cb = function() {var l = document.createElement('link'); l.rel = 'stylesheet';l.href = '{{ config.get('ASSET_PATH') }}/css/{{filename}}{{config.get('ASSET_SUFFIX')}}.css{{'?v={}'.format(config.get('VERSION')) if config.get('INCLUDE_VERSION')}}';var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);};var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;if (raf) raf(cb);else window.addEventListener('load', cb);</script>
+        <noscript><link rel="stylesheet" type="text/css" href="{{ config.get('ASSET_PATH') }}/css/{{filename}}{{config.get('ASSET_SUFFIX')}}.css{{'?v={}'.format(config.get('VERSION')) if config.get('INCLUDE_VERSION')}}"></noscript>
+{%- endmacro -%}

@@ -1,0 +1,27 @@
+{%- macro hero() -%}
+{#
+    expected keyword arguments:
+    1. <str> title
+    2. <str> background_url
+
+    Optional keyword arguments:
+    1. <str> category
+    2. <str> subtitle
+    3. <str> author
+    3. <str> aditional_css
+#}
+<header class="hero--header">
+    <div class="hero--background-image" style="background-image: url({{ kwargs['background_url'] |safe}}); {{ kwargs['additional_css'] |safe}}">
+    {% if kwargs['category'] is defined %}
+        <span class="hero--category">{{ kwargs['category'] |safe}}</span>
+    {% endif %}
+        <h1 class="hero--title">{{ kwargs['title'] |safe}}</h1>
+    {% if kwargs['subtitle'] is defined %}
+        <p class="hero--subtitle">{{ kwargs['subtitle'] |safe}}</p>
+    {% endif %}
+    {% if kwargs['author'] is defined %}
+        <h2 class="hero--author">{{ kwargs['author'] |safe}}</h2>
+    {% endif %}
+    </div>
+</header>
+{%- endmacro -%}

@@ -1,0 +1,20 @@
+{
+  "name": "BRMFlask",
+  "version": "0.1.0",
+  "homepage": "http://www.brmwebdev.com/brmflask",
+  "authors": [
+    "BRM Web Dev <info@brmwebdev.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "brmwebdev/vendor"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "jquery": "~3.0",
+    "font-awesome": "~4.6.3"
+  }
+}

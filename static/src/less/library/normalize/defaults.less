@@ -1,0 +1,45 @@
+@import "../vars/global-vars";
+@import "_vars-normalize";
+
+// Default styling for tags
+// Less normalized.
+// 
+// USES: #tags;
+
+html {
+    margin:0;
+    width: 100%;
+    font-size:16px;
+}
+
+body {
+    font-family: @fonts;
+    width: 100%;
+    margin:0;
+    -webkit-font-smoothing: antialiased;
+}
+
+::-moz-selection {
+    background: @selection-bg-color;
+    color: @selection-color;
+    text-shadow: none;
+}
+::selection {
+    background: @selection-bg-color;
+    color: @selection-color;
+    text-shadow: none;
+}
+
+a {
+    &,&:hover {text-decoration: none;}
+    &:focus {outline: none;}
+}
+
+img {
+    max-width: 100%;
+    width: auto 9;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}

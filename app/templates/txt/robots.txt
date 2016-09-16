@@ -1,0 +1,4 @@
+# robotstxt.org/
+
+User-agent: *
+{% if config.get('DENY_ROBOTS', False) %}Disallow: /{% endif %}

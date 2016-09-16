@@ -1,0 +1,84 @@
+.transition-out {
+    transition: all 0.3s ease-out;
+}
+.transition-in {
+    transition: all 0.1s ease-in;
+}
+
+.transition-hover {
+    transition: all 0.1s ease-in;
+    &:hover {
+        transition: all 0.3s ease-out;
+    }
+}
+
+.small-sans {
+    font-family: @fonts-sans;
+    font-style: normal;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+.has-fa {
+    display:inline-block;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    speak: none;
+    content: "\f14e";
+    position:relative;
+}
+
+// Utilities
+// .small-caps depreciated. Use .smcp
+.small-caps, .smcp {
+    font-feature-settings: "onum", "smcp" on;
+}
+.fractions, .ordn, .ordinals {font-feature-settings: "onum", "ordn" on;}
+.browserupgrade {
+    max-width: 600px;
+    margin:80px auto;
+    text-align: center;
+    padding:12px 20px;
+    font-size:18px;
+    line-height: 1.3;
+    color:#333;
+    background:#f2f2f2;
+    border: 5px solid #f48051;
+}
+.ir {
+    border: 0;
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+.visuallyhidden, .screenreader, .sr {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    // Make navigatable via keyboard
+    &.focusable {
+        &:active, &:focus {
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto;
+        }
+    }
+}
+
+.clearfix {
+  zoom: 1;
+  &:before { content: ''; display: block; }
+  &:after { content: ''; display: table; clear: both; }
+}
+.text-center {text-align:center;}

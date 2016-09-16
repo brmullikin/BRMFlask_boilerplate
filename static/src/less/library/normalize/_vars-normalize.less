@@ -1,0 +1,76 @@
+// Sets normalized values
+// Consider loading vars before normalize for use here.
+
+#normalize {
+    @off-color: #ddd;
+    .a() {
+        &:hover {}
+        &:focus {outline: thin dotted;}
+        &:active, &:hover {outline: 0;}
+    }
+    .abbr-title() {
+        border-bottom: 1px dotted;
+    }
+    .blockquote() {
+        margin: 1em 40px;
+    }
+    .dfn() {
+        font-style: italic;
+    }
+        .h1() {
+        font-size: 2em;
+        margin: 0.67em 0;
+    }
+    .h2() {
+        font-size: 1.5em;
+        margin: 0.83em 0;
+    }
+    .h3() {
+        font-size: 1.17em;
+        margin: 1em 0;
+    }
+    .h4() {
+        font-size: 1em;
+        margin: 1.33em 0;
+    }
+    .h5() {
+        font-size: 0.83em;
+        margin: 1.67em 0;
+    }
+    .h6() {
+        font-size: 0.67em;
+        margin: 2.33em 0;
+    }
+    .hr() {
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        height: 0;
+    }
+    .mark() {
+        color: @off-color;
+    }
+    .p() {
+        margin: 1em 0;
+    }
+    .pre() {
+        margin: 1em 0;
+    }
+    // lists normalized for ol and ul
+    .lists() {
+        margin: 1em 0;
+        padding: 0 0 0 40px;
+        & ol, & ul {
+            margin:0;
+            padding-left:20px;
+        }
+    }
+    .ol() {}
+    .ul() {}
+    .sup() {top: -0.5em;}
+    .sub() {bottom: -0.25em;}
+    .fieldset() {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+}

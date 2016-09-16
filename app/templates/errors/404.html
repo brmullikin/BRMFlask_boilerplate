@@ -1,0 +1,18 @@
+{% set base = config.get('TEMPLATE_PATH') %}
+{% extends '{0}/skeleton/error.html'.format(base) %}
+{%- import '{}/macros/headers.html'.format(base) as headers -%}
+
+{%block title %}404 Page Not Found{% endblock %}
+{%block description %}404 Page Not Found{% endblock %}
+
+{%block hero %}{{
+    headers.hero(
+        title='404 Page Not Found',
+        background_url='{}/img/hero/default.jpg'.format(config.get('ASSET_PATH')),
+        additional_css="background-position: top; height:100vh;",
+        category='Error',
+        subtitle='We are sorry, but this page doesn’t exist.<br>Lost? Return to the <a class="solid" href="/">Home Page</a>'
+    )
+}}{% endblock %}
+{% block content_main %}
+{% endblock %}

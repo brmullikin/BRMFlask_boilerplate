@@ -1,0 +1,16 @@
+{%- macro defer(filename="my") -%}
+    <script defer src="{{ config.get('ASSET_PATH') }}/js/{{filename}}{{config.get('ASSET_SUFFIX')}}.js{{'?v={}'.format(config.get('VERSION')) if config.get('INCLUDE_VERSION')}}"></script>
+{%- endmacro -%}
+
+{%- macro typekit(kitId="", scriptTimeout='3000', async='true') -%}
+    <script>
+        (function(d) {
+        var config = {
+            kitId: '{{kitId}}',
+            scriptTimeout: {{scriptTimeout}},
+            async: {{async}}
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
+{%- endmacro -%}

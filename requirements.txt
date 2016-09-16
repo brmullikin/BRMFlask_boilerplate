@@ -1,0 +1,23 @@
+--process-dependency-links
+##############################
+# Flask & Flask Dependencies #
+##############################
+
+# BRMFlask: https://github.com/brmullikin/brmflask
+-e git+git://github.com/brmullikin/brmflask.git@0.2.4#egg=brmflask
+
+############################
+# Serve Application (Live) #
+############################
+gunicorn
+eventlet
+
+###############################
+# Development & Testing Tools #
+###############################
+pytest
+flask_debugtoolbar
+pytest-cov
+pytest-flask
+pep8
+flake8-pep257

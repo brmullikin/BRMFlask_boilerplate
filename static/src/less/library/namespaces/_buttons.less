@@ -1,0 +1,246 @@
+// tag namepsaces 
+
+// These are going to be style
+
+#buttons {
+    #arrows {
+        #simple {
+            @multiplier: 2;
+            .right(
+                @direction: right;
+                @bg:#333;
+                @color:#fff;
+                @size:1em;
+                @multiplier: @multiplier;
+                @shadow:none;) {
+                #buttons > #arrows > #simple > #blocks > .make(
+                    @direction :@direction;
+                    @bg:@bg;
+                    @color:@color;
+                    @size:@size;
+                    @multiplier: @multiplier;
+                    @shadow:@shadow;);
+            }
+            .left(
+                @direction: left;
+                @bg:#333;
+                @color:#fff;
+                @size:1em;
+                @multiplier: @multiplier;
+                @shadow:none;) {
+                #buttons > #arrows > #simple > #blocks > .make(
+                    @direction: @direction;
+                    @bg:@bg;
+                    @color:@color;
+                    @size:@size;
+                    @multiplier: @multiplier;
+                    @shadow:@shadow;);
+            }
+            #blocks {
+                .make(
+                    @direction: right;
+                    @bg:#333;
+                    @color:#fff;
+                    @size:1em;
+                    @multiplier: @multiplier;
+                    @shadow:none;) {
+                    #buttons > #arrows > #simple > #blocks > .base(
+                        @bg:@bg;
+                        @color:@color;
+                        @size:@size;
+                        @multiplier: @multiplier;
+                        @shadow:@shadow;);
+                    #buttons > #arrows > #simple > #blocks > .arrow(
+                        @direction: @direction;
+                        @bg:@bg;
+                        @color:@color;
+                        @size:@size;);
+                    #buttons > #arrows > #simple > #blocks > .ribbon(
+                        @direction: @direction;
+                        @bg:@bg;
+                        @color:@color;
+                        @size:@size;);
+                }
+                .base(
+                    @bg:#333;
+                    @color:#fff;
+                    @size:1em;
+                    @multiplier: @multiplier;
+                    @shadow:none;) {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    position: relative;
+                    border:none;
+                    text-decoration: none;
+                    text-shadow: @shadow;
+                    color: @color;
+                    background: @bg;
+                    font-size: @size;
+                    line-height: @multiplier;
+                    padding:0;
+                    z-index: 1;
+                    &::before, &::after {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        width: 0;
+                        top: 0;
+                        z-index:-1;
+                    }
+                    &:hover {
+                        color: @color;
+                        background: @bg;
+                        border:none;
+                        text-decoration: none;
+                        text-shadow: @shadow;
+                    }
+                }
+                .arrow(
+                    @direction: right;
+                    @bg:#333;
+                    @color:#fff;
+                    @size:1em;)
+                    when (@direction = right) {
+                    padding-right: 0.25em;
+                    &::after {
+                        border: 1em solid transparent;
+                        border-left-color: @bg;
+                        right: -2em;
+                    }
+                }
+                .arrow(
+                    @direction: right;
+                    @bg:#333;
+                    @color:#fff;
+                    @size:1em;)
+                    when (@direction = left) {
+                    padding-left: 0.25em;
+                    &::after {
+                        border: 1em solid transparent;
+                        border-right-color: @bg;
+                        left: -2em;
+                    }
+                }
+                .block-on-right() {}
+                .block-on-left() {
+
+                }
+                .ribbon(
+                    @direction: right;
+                    @bg:#333;
+                    @color:#fff;
+                    @size:1em;)
+                    when (@direction = right) {
+                    &::before {
+                        border: 1em solid @bg;
+                        border-left-color: transparent;
+                        left: -1.5em;
+                    }
+                }
+                .ribbon(
+                    @direction: right;
+                    @bg:#333;
+                    @color:#fff;
+                    @size:1em;)
+                    when (@direction = left) {
+                    &::before {
+                        border: 1em solid @bg;
+                        border-right-color: transparent;
+                        right: -1.5em;
+                    }
+                }
+                .change(
+                    @direction: right;
+                    @bg: #333;
+                    @color: #fff;)
+                    when (@direction = right) {
+                    padding-right: 0.25em;
+                    padding-left:0;
+                    background: @bg;
+                    color: @color;
+                    &::before {
+                        right:auto;
+                        left: -1.5em;
+                        border-color: @bg;
+                        border-left-color:transparent;
+                    }
+                    &::after {
+                        left:auto;
+                        right: -2em;
+                        border-color:transparent;
+                        border-left-color:@bg;
+                    }
+                    &:hover {
+                        background: @bg;
+                        color: @color;
+                    }
+                }
+                .change(
+                    @direction: right;
+                    @bg: #333;
+                    @color: #fff;)
+                    when (@direction = left) {
+                    padding-left: 0.25em;
+                    padding-right:0;
+                    background: @bg;
+                    &::before {
+                        left:auto;right: -1.5em;
+                        border-color: @bg;
+                        border-right-color:transparent;
+                    }
+                    &::after {
+                        right:auto;
+                        left: -2em;
+                        border-color: transparent;
+                        border-right-color:@bg;
+                    }
+                    &:hover {
+                        background: @bg;
+                        color: @color;
+                    }
+                }
+            }
+        }
+    }
+    #ribbons {
+        @multiplier: 2;
+        #simple {
+            .ribbons(
+                @bg:#333;
+                @color:#fff;
+                @size:1em;
+                @multiplier: @multiplier;
+                @shadow:none;) {
+                #buttons > #arrows > #simple > #blocks > .base(
+                    @bg:@bg;
+                    @color:@color;
+                    @size:@size;
+                    @multiplier: @multiplier;
+                    @shadow:@shadow;);
+                #buttons > #arrows > #simple > #blocks > .ribbon(
+                    @direction: right;
+                    @bg:@bg;
+                    @color:@color;
+                    @size:@size;);
+                &::after {
+                    border: 1em solid @bg;
+                    border-right-color: transparent;
+                    right: -1.5em;
+                }
+            }
+            .change(@bg: #333; @color: #fff;) {
+                background: @bg;
+                color: @color;
+                &::before, &::after {
+                    border-color: @bg;
+                }
+                &::before {
+                    border-left-color: transparent;
+                }
+                &::after {
+                    border-right-color: transparent;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+{%- set base = config.get('TEMPLATE_PATH') -%}
+{%- import '{}/macros/analytics.html'.format(base) as analytics -%}
+{%- import '{}/macros/link.html'.format(base) as link -%}
+{%- import '{}/macros/script.html'.format(base) as script -%}{#
+    Template variables and their defaults, along with description
+
+    Block Variables:
+    ----------------
+    description: N/A (contains the description used by google)
+    title: N/A (page title NOT the visual title)
+    author: BRM Web Dev (The author of the page’s content)
+    image: /img/logo.png (The image associated with this page)
+    twitter_site: @someapp (the site twitter handle)
+    twitter_creator: @someapp (the author twitter handle)
+    scripts_default: my.js (the primary and default javascript for EVERY page)
+    scripts: N/A (any page specific javascript needed)
+    css_default: style.css (the primary and default css for EVERY page)
+    css: N/A (any page specific css needed)
+    google_UA: UA-XXXXX-X (The Google Analytics code)
+    google_domain: www.someapp.com (the domain to be tracked by google)
+
+    Block Areas:
+    ------------
+
+    content_header: (the header for the page)
+        partials/content/header/default.html
+
+    content_main: (the default main content for the page)
+        N/A
+
+    content_footer: (the footer for the page)
+        partials/content/footer/default.html
+#}<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="dns-prefetch" href="{{ config.get('ASSET_BASE') }}">
+
+    <title>{%block title %}{% endblock %}</title>
+
+    {{ link.icons(config.get('ASSET_PATH')) }}
+    <style type="text/css">{% include '{}/partials/critical.min.css'.format(base) %}</style><noscript><style type="text/css">.no-js .lazy-load {opacity: 1;transition: opacity 500ms ease-in;}html {overflow: auto!important;}.loader{display:none;}</style></noscript>
+</head>
+<body class="{%block body_classes %}{% endblock %}">
+    <div class="loader"></div>
+    <div class="lazy-load">
+        {%- block content_header -%}
+        {% include '{}/partials/headers/default_header.htm.j2'.format(base) %}
+        {%- block hero -%}{%- endblock -%}
+        {%- endblock -%}
+        {%- block body %}{%- endblock -%}
+    </div>
+    {%- block css_default -%}
+        {{ link.async_stylesheet('style') }}
+    {%- endblock -%}
+    {%- block css -%}{%- endblock -%}
+    {%- block scripts_default -%}
+        {{ script.defer('my') }}
+        {{ analytics.google_analytics('UA-XXXXXXXXX')}}
+        <script>
+            (function(d) {
+            var config = {
+                kitId: 'hva8qsz',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            })(document);
+            </script>
+    {%- endblock -%}
+    {%- block scripts -%}{%- endblock -%}
+</body>
+</html>

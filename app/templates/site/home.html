@@ -1,0 +1,41 @@
+{% set base = config.get('TEMPLATE_PATH') %}
+{% extends '{0}/skeleton/base.html'.format(base) %}
+{%- import '{}/macros/headers.html'.format(base) as headers -%}
+
+{%block title %}BRMFlask Boilerplate{% endblock %}
+{%block description %}A Boilerplate project for the BRMFlask project.{% endblock %}
+
+{%block hero %}
+{% if config['DEBUG'] %}
+{{
+    headers.hero(
+        title='An Example Website',
+        background_url='{}/img/hero/default.jpg'.format(config.get('ASSET_PATH')),
+        subtitle='A sometimes useful boilerplate for <a href="https://github.com/brmullikin/BRMFlask" title="BRMFLASK">BRMFLASK</a>',
+        author='<a class="solid" href="https://github.com/brmullikin/BRMFlask_boilerplate" title="BRMFlask Boilerplate">View On Github</a>'
+    )
+}}
+{% endif %}
+{% endblock %}
+
+{% block content_main %}
+<nav class="toc more-information" title="Getting Started">
+    <h1>BRMFlask Guide</h1>
+    <ul>
+        <li><a href="#">Installation</a></li>
+        <li><a href="#">Customizations</a></li>
+        <li><a href="#">Static Files</a></li>
+        <li><a href="#">File list</a></li>
+    </ul>
+</nav>
+
+{% filter markdown %}
+
+* Business Boilderplate Website
+* Lawyer Boilerplate Website
+* Accountant Boilerplate Website
+* Retail Boilerplate Website
+
+{% endfilter %}
+
+{% endblock %}

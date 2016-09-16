@@ -1,0 +1,345 @@
+@twitter-color: #56abee;
+@facebook-color: #48649f;
+.twitter {a, a:hover {color:@twitter-color;}}
+.facebook {a, a:hover {color:@facebook-color;}}
+.github {a, a:hover {color:#231f10;}}
+.navicon-btn {
+    display: inline-block;
+    position: relative;
+    transition: 0.25s;
+    cursor: pointer;
+    user-select: none;
+    opacity: .8;
+    height:0.5rem;
+
+    .navicon:before, .navicon:after {
+        transition: 0.25s;
+    }
+}
+
+.navicon {
+    display:block;
+    position: relative;
+    width: 1.35rem;
+    height: .135rem;
+    background: #231f20;
+    transition: 0.5s;
+    border-radius: 2.5rem;
+
+    &:before, &:after {
+        display: block;
+        content: "";
+        height: .135rem;
+        width: 1.35rem;
+        background: #231f20;
+        position: absolute;
+        z-index: -1;
+        transition: 0.5s 0.25s;
+        border-radius: 1rem;
+    }
+
+      &:before { top: .375rem; }
+      &:after { top: -.375rem; }
+}
+.menu-button:hover {
+    .navicon {
+        &:before { top: .375rem; }
+        &:after { top: -.375rem; }
+    }
+}
+
+// .open:not(.steps) .navicon:before,
+// .open:not(.steps) .navicon:after {
+//   top: 0 !important;
+// }
+.menu-label {
+    transition: 0.25s;
+    &:after {
+        content: "Menu";
+    }
+}
+.open  {
+    .open { transform: scale(0.75); }
+    .menu-label {
+        &:after {
+            content: "Close";
+            color:#333640;
+        }
+    }
+    .navicon {
+        background: transparent;
+        &:before, &:after {
+            top: 0 !important;
+            transition: 0.5s;
+            background:#d84b2e;
+        }
+        &:before { transform: rotate(-45deg); }
+        &:after { transform: rotate(45deg); }
+    }
+}
+
+@menu-advert-width: 300px;
+
+// let's make some nav-wide declarations
+nav {
+    ul, ol {margin:0;padding:0;}
+}
+// let's make some header-wide declarations
+.menu {
+    &.closed {
+        //display:none;
+        opacity:0;
+        // transition TODO: extend from single class
+        &:extend(.transition-out);
+        // force menu to be below all other content when closed
+        z-index: -1000;
+        // force menu to be unable to be clicked when closed
+        visibility:hidden;
+    }
+    // set z-index to 9999 to cover any modals/etc.
+    z-index: 9999;
+    // add padding
+    padding: 1em;
+    padding-top:5em;
+    padding-bottom:6em;
+    // put up a border when the menu is open
+    border-top: 3px solid #555a6b;
+    &:extend(.transition-in);
+    // fix the menu
+    position: fixed;
+    // make full width by setting left and right to 0
+    left:0;
+    right:0;
+    // place at very top
+    top:0;
+    //make full height, less the height of top-bar
+    // (there is 1 extra px on account of the border)
+    height: ~"calc(100vh + 5em)";
+    // set the background
+    background:#f2f2f2;
+    // allow one to scroll in the menu
+    overflow: scroll;
+    // center is default.
+    text-align:center;
+    box-sizing: border-box;
+}
+.menu-wrapper {
+    // give a relative wrapper for advert
+    position:relative;
+    // set practical max-width
+    max-width:400px;
+    // center the wrapper
+    margin:0 auto;
+    @media screen and (min-width: 768px) {
+        // add a margin on tablet and above.
+        margin: 1rem auto;
+        // move the wrapper half of what advert width is
+        //left:-140px;
+        left: -(@menu-advert-width / 2);
+    }
+}
+.menu-button {
+    // position relative so we can set the z-index
+    position:relative;
+    // high z-index so meny is always on top. #5 digits
+    z-index: 99999;
+    // make menu button float right
+    float: right;
+    // change to sans-serif font.
+    // this will need to be modified with fall-backs for production
+    //font-family: @sans-font;
+
+    // Set this to the height of the logo on the left, so that it will always be centered with it.
+    line-height: 1.3;
+
+    // we want this to be all caps
+    text-transform: uppercase;
+
+    // not bold
+    font-weight: 300;
+
+    // font-size slightly larger than base
+    font-size:1.2rem;
+
+    // Show cursor when we hover over it, as if it were a link
+    cursor: pointer;
+    margin:1em;
+    margin-left:0.35em;
+    font-family: sans-serif;
+}
+.secondary-menu {
+    // center text while mobile
+    text-align:center;
+    // set margins
+    margin:1rem auto;
+    // have the margin count 2
+    column-count: 2;
+    // gap between margins
+    column-gap: 10px;
+    @media screen and (min-width:980px) {
+        // larger margin on larger screen
+        margin:2rem auto;
+        // set columns to 3
+        column-count: 3;
+        // make text align left on wider screen
+        text-align:left;
+    }
+    li a {
+        // set margin-bottom (instead of top and bottom)
+        // so that columns still align
+        display:inline-block;
+        margin-bottom:0.2rem;
+        color: #727272;
+        transition: color 0.2s ease-out;
+        &:hover {
+            color:#323232;
+            transition: color 0.1s ease-in;
+        }
+    }
+}
+.bottom-advert {
+    padding: 0.45em 0.65em;
+    box-sizing: border-box;
+    background: #555a6b;
+    color:#fff;
+}
+.main-menu {
+    // forces width to be width of text
+    display:inline-block;
+    // align to the left
+    text-align:left;
+    @media (min-width:980px) {
+        display:block;
+    }
+    li {
+        // make font larger
+        font-size:1.65rem;
+        // add margin to list elements
+        margin:0.45em auto;
+    }
+    a {
+        color: #333640;
+        &:hover {
+            &:before {
+                // extend transition out
+                &:extend(.transition-out);
+                // slide in to the right sligthly
+                left:-0.45em;
+                // force color not to change.
+                color:#333640;
+                opacity:1;
+            }
+        }
+        &:before {
+            // add transition to icon
+            &:extend(.transition-in);
+            // extend fa icon class
+            &:extend(.has-fa);
+            // move left to prep for hover slide
+            left:-0.65em;
+            // make smaller than text
+            font-size:0.7em;
+            // align the icon to the right
+            text-align:right;
+            // set the width explicitly for normalization
+            width:1em;
+            // move up a bit since font is smaller
+            top:-0.1em;
+        }
+        &:before {content: "\f18e";opacity:0.2;}
+    }
+}
+.designed-by {
+    // smaller than normal
+    font-size: 0.8rem;
+    a {
+        // make darker than normal links
+        color: #231f20;
+        &:hover {
+            // no color change on rover
+            color:#231f20;
+            img {
+                // rotate icon on hover
+                transform: rotate(360deg);
+                // slow transition for rotation
+                transition: all .5s ease-in;
+            }
+        }
+        // make "designed by" italic
+        span {font-style: italic;}
+        img {
+            // better image alignment
+            vertical-align: middle;
+            // relative so we can move upward
+            position: relative;
+            // move upward
+            top: -1px;
+            // specific width downsizes icon
+            width: 14px;
+            // transition for after hover
+            transition: all .3s ease-out;
+        }
+    }
+}
+.social-menu {
+    // Set margin
+    margin: 1.25rem 0;
+    li {
+        @media screen and (min-width: 768px) {
+            // make inline on larger screens
+            display: inline;
+        }
+        a {
+            display:block;
+            @media screen and (min-width: 768px) {
+                // make inline on larger screens
+                display: inline;
+            }
+            // padding for easier clicking on mobile
+            padding:0.25rem 0.45rem;
+            // increase right margin on icon
+            i {margin-right: 0.25em;}
+            span {
+                // make text small sans
+                &:extend(.small-sans);
+                // position relative to move up
+                position:relative;
+                // move up slightly since smaller font size.
+                top:-0.1rem;
+            }
+        }
+    }
+}
+.menu-cta {
+    max-width: 740px;
+    background: #555a6b;
+    color:#fff;
+    margin: 0 auto;
+    padding: 2em 1em;
+    box-sizing: border-box;
+}
+.menu-advert {
+    // position advert absolutely
+    position: absolute;
+    // place at top
+    top:0;
+    // move to the left a bit more than half the width
+    right: -@menu-advert-width - 20px;
+    // hide one small screens
+    display:none;
+    // set width explicitly (because of absolute)
+    width: @menu-advert-width;
+    @media screen and (min-width: 768px) {
+        // show on tablet and larger
+        display: block;
+    }
+    .top-advert, .bottom-advert {
+        &:extend(.clearfix all);
+        margin:0 auto;
+        padding:2em 1em;
+    }
+    .top-advert {border:2px dashed #333;}
+    .bottom-advert, {margin-top:2em;}
+    .bottom-advert .hero-button:hover {color:#616869;}
+    .bottom-advert .hero-subtitle {color: #d6d9da;}
+}
