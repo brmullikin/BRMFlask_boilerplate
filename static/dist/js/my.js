@@ -26,7 +26,7 @@ return j.call(r(a),c)})),b))for(;i>h;h++)b(a[h],c,g?d:d.call(a[h],h,b(a[h],c)));
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.6'
+  Affix.VERSION  = '3.3.7'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
@@ -174,7 +174,6 @@ return j.call(r(a),c)})),b))for(;i>h;h++)b(a[h],c,g?d:d.call(a[h],h,b(a[h],c)));
         var top = offset.top;
         $('html, body').animate({scrollTop:top-150}, 500);
     });
-    console.log('This is the jump animation');
 })();
 ;var menu = (function() {
     var scrolled;
@@ -217,7 +216,7 @@ return j.call(r(a),c)})),b))for(;i>h;h++)b(a[h],c,g?d:d.call(a[h],h,b(a[h],c)));
     });
     console.log('this is the menu action');
 })();
-;;var pageReady = (function(){
+;var pageReady = (function(){
     if (document.hidden == null || !document.hidden) {
         $('html').addClass('page-ready');
     }

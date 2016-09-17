@@ -1,22 +1,22 @@
 html {
     overflow: hidden !important;
 }
-html.page-ready.wf-active, html.page-ready.wf-inactive {
+html.page-ready {
     overflow: auto !important;
 }
-html.page-ready.wf-active.no-scrollbar, html.page-ready.wf-inactive.no-scrollbar {
+html.page-ready.no-scrollbar {
     overflow: hidden !important;
 }
 .lazy-load {
     opacity: 0;
 }
-.page-ready.wf-active .lazy-load, .page-ready.wf-inactive .lazy-load {
+.page-ready .lazy-load {
     opacity: 1;
     -webkit-transition: opacity 500ms ease-in;
     -o-transition: opacity 500ms ease-in;
     transition: opacity 500ms ease-in;
 }
-.page-ready.wf-active .loader, .page-ready.wf-inactive .loader {
+.page-ready .loader {
     display: none;
 }
 
