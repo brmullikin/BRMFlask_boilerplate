@@ -4,6 +4,7 @@ from brmflask.settings import BaseConfig
 
 class LiveConfig(BaseConfig):
     """Alias the BaseConfig to LiveConfig."""
+
     pass
 
 
