@@ -1,9 +1,9 @@
 {
-  "name": "BRMFlask",
+  "name": "BRMFlask_Boilerplate",
   "version": "0.1.0",
-  "homepage": "http://www.brmwebdev.com/brmflask",
+  "homepage": "http://www.brmullikin.com",
   "authors": [
-    "BRM Web Dev <info@brmwebdev.com>"
+    "B. R. Mullikin <ben@brmullikin.com>"
   ],
   "license": "MIT",
   "private": true,
