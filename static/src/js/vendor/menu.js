@@ -11,7 +11,6 @@ var menu = (function() {
             return;
         }
 
-
         if (top > lastScrollTop && top > navbarHeight) {
             $('.top-header').addClass('is-minimized');
         } else {
@@ -37,5 +36,5 @@ var menu = (function() {
         $('.menu').toggleClass("closed");
         $('html').toggleClass("no-scrollbar");
     });
-    console.log('this is the menu action');
+    console.log('menu loaded');
 })();

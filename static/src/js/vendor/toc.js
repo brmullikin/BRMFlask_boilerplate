@@ -8,5 +8,5 @@ var toc = (function() {
           bottom: ($('footer').outerHeight(true) + 70)
         }
     });
-    console.log('This is the toc Action');
+    console.log('toc loaded');
 })();
