@@ -1,6 +1,11 @@
 .brm_todo
 .env
-.brm_env
+
+# You will probably not want to include this in produdction.
+# Especially if you use it to load sensetive info.
+# It is is included in the repo here for illustrative pruposes only.
+# .brm_env
+
 static/src/vendor
 bower_components
 node_modules
