@@ -72,4 +72,5 @@ gulp.task('less', function() {
 gulp.task('watch', function() {
     gulp.watch('static/src/js/vendor/**/*.js', ['jshint', 'scripts']);
     gulp.watch('static/src/less/**/*.less', ['less']);
+    gulp.watch('static/src/img/**/*', ['imagemin']);
 });
