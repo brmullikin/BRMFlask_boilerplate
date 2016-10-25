@@ -4,9 +4,14 @@ var scriptSrc = [
     'static/src/vendor/bootstrap/js/affix.js',
     'static/src/js/vendor/**/*.js'
 ]
+/* For projects w/ Less */
 var lessSrc = [
     'static/src/less/style.less',
     'static/src/vendor/font-awesome/less/font-awesome.less'
+]
+/* For projects w/ Sass */
+var scssSrc = [
+    'static/src/scss/style.scss'
 ]
 
 /**********
@@ -26,13 +31,12 @@ var gulpif = require('gulp-if');
 var imagemin = require('gulp-imagemin');
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
+var sass = require('gulp-sass');
 var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
-
-gulp.task('default', ['less', 'jshint', 'scripts', 'imagemin']);
 
 gulp.task('imagemin', function() {
     var imgSrc = 'static/src/img/**/*';
@@ -69,8 +73,23 @@ gulp.task('less', function() {
         .pipe(gulp.dest('static/dist/css'));
 });
 
+gulp.task('sass', function() {
+    gulp.src(scssSrc)
+        .pipe(gulpif(!argv.build, sourcemaps.init()))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({map: true}))
+        .pipe(concat('style.css'))
+        .pipe(gulpif(!argv.build, sourcemaps.write()))
+        .pipe(gulpif(argv.build, cleanCSS()))
+        .pipe(gulpif(argv.build, rename('style.min.css')))
+        .pipe(gulp.dest('static/dist/css'));
+});
+
+gulp.task('default', ['less', 'jshint', 'scripts', 'imagemin']);
+
 gulp.task('watch', function() {
     gulp.watch('static/src/js/vendor/**/*.js', ['jshint', 'scripts']);
     gulp.watch('static/src/less/**/*.less', ['less']);
+    //gulp.watch('static/src/scss/**/*.scss', ['sass']);
     gulp.watch('static/src/img/**/*', ['imagemin']);
 });
