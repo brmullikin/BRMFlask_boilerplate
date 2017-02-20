@@ -40,7 +40,7 @@
     <title>{%block title %}{% endblock %}</title>
 
     {{ link.icons(config.get('ASSET_PATH')) }}
-    <style type="text/css">{% include '{}/partials/critical.min.css'.format(base) %}</style><noscript><style type="text/css">.no-js .lazy-load {opacity: 1;transition: opacity 500ms ease-in;}html {overflow: auto!important;}.loader{display:none;}</style></noscript>
+    {% include '{}/partials/critical_css/critical_css.htm.js'.format(base) %}
 </head>
 <body class="{%block body_classes %}{% endblock %}">
     <div class="loader"></div>
