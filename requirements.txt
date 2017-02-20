@@ -20,5 +20,4 @@ flask_debugtoolbar
 pytest-cov
 pytest-flask
 pep8
-flake8==2.6.2
-flake8-pep257
+flake8

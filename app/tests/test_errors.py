@@ -1,6 +1,7 @@
 """Test various error handler functions."""
 import pytest
 
+
 @pytest.mark.options(debug=False)
 def test_403(client):
     """Test 403 error."""
