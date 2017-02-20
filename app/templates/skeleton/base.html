@@ -56,10 +56,7 @@
     <meta name="twitter:image" content="{{ config.get('ASSET_PATH') }}/{{self.mainimage()}}">
     <script type="application/ld+json">{"@context": "http://schema.org","@type": "WebPage","headline": "{{self.title()}}","description": "{{self.description()}}","name": "{{self.title()}}","url": "{{config.get('BASE_URI')}}{{config.get('SERVER_NAME')}}{{ request.path }}","author": {"@type": "Person","name": "{{self.author()}}"},"image": {"@type": "ImageObject","url": "{{ config.get('ASSET_PATH') }}/{{self.mainimage()}}"}}</script>
     {{ link.icons(config.get('ASSET_PATH')) }}
-    <style type="text/css">{% include '{}/partials/critical.min.css'.format(base) %}</style><noscript><style type="text/css">.no-js .lazy-load {opacity: 1;transition: opacity 500ms ease-in;}html {overflow: auto!important;}.loader{display:none;}</style></noscript>
-    {%- block css_default -%}
-        {{ link.stylesheet('style') }}
-    {%- endblock -%}
+    {% include '{}/partials/critical_css/critical_css.htm.js'.format(base) %}
 </head>
 <body class="{%block body_classes %}{% endblock %}">
     <div class="loader"></div>
@@ -79,6 +76,9 @@
             {% include '{}/partials/footers/default_footer.htm.j2'.format(base) %}
         {%- endblock -%}
     </div>
+    {%- block css_default -%}
+        {{ link.stylesheet('style') }}
+    {%- endblock -%}
     {%- block css -%}{%- endblock -%}
     {%- block scripts_default -%}
         {{ script.defer('my') }}

@@ -14,6 +14,10 @@ var scssSrc = [
     'static/src/scss/style.scss'
 ]
 
+var criticalCSSSrc = [
+    'static/src/critical_css/critical_css.scss'
+]
+
 /**********
  ** GULP **
  **********/
@@ -85,11 +89,21 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('static/dist/css'));
 });
 
-gulp.task('default', ['less', 'jshint', 'scripts', 'imagemin']);
+gulp.task('critical_css', function() {
+    gulp.src(criticalCSSSrc)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({map: true}))
+        .pipe(concat('critical_css.min.css'))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('app/templates/partials/critical_css'));
+});
+
+gulp.task('default', ['less', 'critical_css', 'jshint', 'scripts', 'imagemin']);
 
 gulp.task('watch', function() {
     gulp.watch('static/src/js/vendor/**/*.js', ['jshint', 'scripts']);
     gulp.watch('static/src/less/**/*.less', ['less']);
     //gulp.watch('static/src/scss/**/*.scss', ['sass']);
+    gulp.watch('static/src/critical_css/critical_css.scss', ['critical_css'])
     gulp.watch('static/src/img/**/*', ['imagemin']);
 });
