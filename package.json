@@ -1,9 +1,9 @@
 {
-  "name": "www.brmullikin.com",
-  "version": "0.2.0",
+  "name": "BRM Flask Boilerplate",
+  "version": "0.0.3",
   "author": "B. R. Mullikin <ben@brmullikin.com>",
   "homepage": "https://www.brmullikin.com",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:brmullikin/brmflask_boilerplate.git"

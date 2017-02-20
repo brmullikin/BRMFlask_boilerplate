@@ -1,7 +1,7 @@
 {
   "name": "BRMFlask_Boilerplate",
-  "version": "0.1.0",
-  "homepage": "http://www.brmullikin.com",
+  "version": "0.0.3",
+  "homepage": "http://www.brmwebdev.com/brmflask",
   "authors": [
     "B. R. Mullikin <ben@brmullikin.com>"
   ],
@@ -9,11 +9,9 @@
   "private": true,
   "ignore": [
     "**/.*",
-    "node_modules",
-    "brmwebdev/vendor"
+    "node_modules"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.6",
     "jquery": "~3.0",
     "font-awesome": "~4.6.3"
   }
