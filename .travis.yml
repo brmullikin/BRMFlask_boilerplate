@@ -4,6 +4,6 @@ python:
 install:
   - "pip install -r requirements.txt"
   - "pip install coveralls"
-script: "py.test -v --cov-report term-missing --cov app"
+script: "py.test app"
 after_success:
   - coveralls
